@@ -19,7 +19,7 @@ else
 SDL_CONFIG ?= sdl-config
 endif
 SDL_CFLAGS := $(shell $(SDL_CONFIG) --cflags) -DUSE_SDL2
-SDL_LIBS   := $(shell $(SDL_CONFIG) --libs) -lXi  -lX11 -lXt -lXxf86vm -lXss -lXrandr -lXcursor -lwayland-client -lxkbcommon -lwayland-cursor -ldrm -lwayland-egl -lgbm -lXinerama -lpulse -lasound 
+SDL_LIBS   := $(shell $(SDL_CONFIG) --libs) -lXi  -lX11 -lXt -lXxf86vm -lXss -lXrandr -lXcursor -lwayland-client -lxkbcommon -lwayland-cursor -ldrm -lwayland-egl -lgbm -lXinerama -lpulse -lasound
 
 BASEVERSION=1.09
 VERSION=$(BASEVERSION)$(GLIBC)
@@ -37,8 +37,7 @@ ARCH=i386
 endif
 NOARCH=noarch
 
-# Edit this path, or you probably will run into trouble.
-MOUNT_DIR=/home/wyatt/development/Quake-LinuxUpdate/WinQuake
+MOUNT_DIR=$(shell pwd)
 MASTER_DIR=/grog/Projects/QuakeMaster
 MESA_DIR=/usr/local/src/Mesa-2.6
 
@@ -775,4 +774,3 @@ clean-release:
 clean2:
 	-rm -f $(SQUAKE_OBJS) $(X11_OBJS) $(GLQUAKE_OBJS) $(GLSVGA_OBJS) \
 		$(GLX_OBJS)
-
