@@ -10,6 +10,12 @@ You can produce a Docker image containing `quake.x11` as follows:
 
 Ensure to place your `.pak` files in `WinQuake/id1` prior to executing `build.sh`.
 
+If you want to run it locally for testing (not much use because of Docker networking):
+
+	./run.sh
+
+So to clarify, the point of all this is to make it easy to run a containerized dedicated server.
+
 **Original README follows...**
 
 A brief readme added by Wyatt Ward.

@@ -17,17 +17,22 @@ WORKDIR /srv/Quake-LinuxUpdate/WinQuake
 ARG DEBUG
 ENV DEBUG=${DEBUG}
 
-RUN make -f Makefile.Linuxi386.X11 build_debug
+RUN make -f Makefile.Linuxi386.X11 build_release
 
 FROM i386/ubuntu:18.04
 
 WORKDIR /srv/WinQuake
 
 RUN apt-get update && apt-get install -y \
-    libxxf86dga1 libsdl2-2.0-0
+    libxxf86dga1 libsdl2-2.0-0 wget
+
+RUN wget https://github.com/sorenisanerd/gotty/releases/download/v1.5.0/gotty_v1.5.0_linux_386.tar.gz
+RUN tar -xzvf gotty_v1.5.0_linux_386.tar.gz
 
 COPY --from=builder /srv/Quake-LinuxUpdate/WinQuake/id1/ /srv/WinQuake/id1/
-COPY --from=builder /srv/Quake-LinuxUpdate/WinQuake/debugi386/bin/quake.x11 /srv/WinQuake/quake.x11
+COPY --from=builder /srv/Quake-LinuxUpdate/WinQuake/releasei386/bin/quake.x11 /srv/WinQuake/quake.x11
 
-ENTRYPOINT ["./quake.x11"]
-CMD ["-dedicated", "16", "-port", "26000", "-noipx", "-debug", "-condebug", "-verbose", "+map", "dm5"]
+EXPOSE 8080
+
+ENTRYPOINT ["./gotty"]
+CMD ["--address", "0.0.0.0", "--ws-origin", ".*", "--permit-write", "./quake.x11", "-dedicated", "64", "-port", "26000", "-noipx", "-debug", "-condebug", "-verbose", "+map", "dm5"]
