@@ -1,6 +1,6 @@
 ARG DEBUG
 
-FROM i386/ubuntu:18.04 AS builder
+FROM --platform=linux/i386 i386/ubuntu:18.04 AS builder
 
 RUN apt-get update && apt-get install -y \
     build-essential git libsdl2-dev libsdl2-2.0-0 \
