@@ -19,7 +19,7 @@ ENV DEBUG=${DEBUG}
 
 RUN make -f Makefile.Linuxi386.X11 build_release
 
-FROM i386/ubuntu:18.04
+FROM --platform=linux/i386 i386/ubuntu:18.04
 
 WORKDIR /srv/WinQuake
 
