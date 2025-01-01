@@ -1,0 +1,3 @@
+WinQuake/*.o
+WinQuake/debugi386
+WinQuake/releasei386

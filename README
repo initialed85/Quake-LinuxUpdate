@@ -1,3 +1,23 @@
+I've forked this repo to add some build tooling to the already great work done by [wyatt8740](https://github.com/wyatt8740); you can check out the diff, but
+the main theme of the changes are:
+
+- Add some native and containerized build tooling
+- Add some more detailed multiplayer connection attempt logging for the dedicated server
+
+You can produce a Docker image containing `quake.x11` as follows:
+
+	./build.sh
+
+Ensure to place your `.pak` files in `WinQuake/id1` prior to executing `build.sh`.
+
+If you want to run it locally for testing (not much use because of Docker networking):
+
+	./run.sh
+
+So to clarify, the point of all this is to make it easy to run a containerized dedicated server.
+
+**Original README follows...**
+
 A brief readme added by Wyatt Ward.
 
 I added this readme and some updated Makefiles, as well as tweaking a few of
@@ -97,7 +117,7 @@ go to the directory 'WinQuake' and type
 
 The makefile named 'Makefile.linuxi386' is the original one from id, which
 does not work anymore. The GLX and X11 makefiles are derived from this one,
-but do successfully build. Use them instead! 
+but do successfully build. Use them instead!
 
 The file 'Makefile.Linuxi386.glx' should be the same as the normal 'Makefile'.
 
@@ -112,7 +132,7 @@ paths, but is lower quality graphics-wise, do
     $ make -f Makefile.Linuxi386.X11 build_release
 
 =================================================
-:	POTENTIAL BUILD PROBLEMS		: 
+:	POTENTIAL BUILD PROBLEMS		:
 =================================================
 	+++++++++++++
 	| Libraries |
@@ -192,4 +212,3 @@ a CD-ROM. I cannot answer questions about sound support.
 
 -Wyatt Ward, 2014-01-06 16:04 EST
 	Last Edited: 2014-01-14 9:25 EST
-

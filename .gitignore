@@ -1,0 +1,5 @@
+WinQuake/id1/pak*.pak
+WinQuake/debugi386
+WinQuake/releasei386
+WinQuake/debugaarch64
+WinQuake/releaseaarch64
