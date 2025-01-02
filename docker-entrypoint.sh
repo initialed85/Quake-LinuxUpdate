@@ -2,7 +2,7 @@
 
 set -e -x
 
-quake_cmd='./quake.x11 -debug -condebug -mem 256 -zone 2048 -dedicated 16 -port 26000 -noipx -game frikbot +map dm6 +sv_aim 1 +saved1 1 +skill 0 +sys_ticrate 0.05'
+quake_cmd='./quake.x11 -mem 256 -zone 2048 -dedicated 16 -port 26000 -noipx -game frikbot +map dm6 +sv_aim 1 +saved1 1 +skill 0 +sys_ticrate 0.05'
 
 if [[ "${DISABLE_GOTTY}" == "1" ]]; then
     ${quake_cmd}
